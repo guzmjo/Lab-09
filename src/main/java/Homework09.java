@@ -1,8 +1,9 @@
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author MoaathAlrajab
@@ -29,6 +30,47 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over one hundred divisors?
     
     */
+   
+    public static void main(String[] args) {
+        int divNum = 1, div = 1, natSum = 0, natNum = 1;
+   
+        
+        //loop will stop iterating once a triangle number with
+        //more than 100 divisors has been found
+        while (divNum < 100) {
+            
+            //values of the divider and the number of divider gets reset to 1
+            //because the nested loop is iterating through how many divisors 
+            //each triangle number has
+            div = 1;
+            divNum = 1;
+            
+            //natSum will be added by ever natural number {1, 2, 3, 4, 5, ...}
+            natSum += natNum;
+            ++natNum;
+            
+            //since a factor can't be more than half the amount of a number (besides the number itself)
+            //we only check for the number of divisors up to half the number
+            //I also put the if statement to check if the triangle number is even
+            //because even numbers will always have more factors than odd numbers
+            //and also to speed up the efficiency a bit as the program skips
+            //odd numbers
+            if (natSum % 2 == 0) {
+                while ((div <= natSum / 2)) {
+                    if (natSum % div == 0) {
+                        ++divNum;
+                    }
+                    ++div;
+                }
+                
+            }
+           
+        }
+        
+        System.out.println(natSum + "'s number of factors: " + divNum);
+        
+     
+  
     
-    
+    }
 }
